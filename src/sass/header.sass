@@ -1,0 +1,70 @@
+.header
+	height: 100vh
+	&__top-line
+		display: flex
+		justify-content: space-between
+		align-items: center
+		height: 97px
+	&__contacts
+		display: flex
+		align-items: center
+	&__phone
+		text-transform: uppercase
+		text-decoration: none
+		font-family: 'DINPro-Medium', serif
+		color: $blue
+		font-size: 18px
+		&:hover
+			text-decoration: underline
+	&__button
+		@extend %blue-text
+		margin-left: 30px
+		padding: 7px 15px
+		border: 2px solid $orange
+		border-radius: 5px
+		background: transparent
+		font-size: 16px
+		transition: border .1s
+		&:hover
+			cursor: pointer
+			border-top: 1px solid $orange
+			border-left: 1px solid $orange
+			border-bottom: 3px solid $orange
+			border-right: 3px solid $orange
+			&:active
+				border: 2px solid $orange
+	&__body
+		background: #d2cfcc url(../img/header.jpg) no-repeat
+		background-position: center right
+		background-size: auto 100%
+		height: 100%
+		max-height: calc(100vh - 97px)
+		display: flex
+		justify-content: start
+		align-items: start
+
+	&__title
+		margin-top: 140px
+		margin-bottom: 10px
+		font-family: 'DINPro', serif
+		color: $blue
+		font-size: 54px
+	&__text
+		margin: 0
+		font-size: 22px
+		color: #55646e
+		font-family: 'DINPro-Medium', serif
+		&:last-of-type
+			color: #aaa7a5
+			font-size: 20px
+
+	&__body-button
+		margin-top: 50px
+		margin-bottom: 70px
+		font-size: 24px
+		width: 330px
+	&__partners
+		width: 420px
+		height: 57px
+		margin-top: 10px
+		background-image: url(../img/partners.png)
