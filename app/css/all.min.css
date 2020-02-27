@@ -41,12 +41,19 @@
 }
 
 * {
+  outline: 1px dashed orange;
   box-sizing: border-box;
 }
 
 body {
   padding: 0;
   margin: 0;
+  font-family: 'DINPro', serif;
+}
+
+figure, ul {
+  margin: 0;
+  padding: 0;
 }
 
 .wrapper {
@@ -64,6 +71,12 @@ body {
   text-transform: uppercase;
   font-size: 20px;
   font-family: 'DINPro', serif;
+}
+
+.title {
+  font-size: 44px;
+  color: #093b5f;
+  text-align: center;
 }
 
 .header {
@@ -168,4 +181,74 @@ body {
   height: 57px;
   margin-top: 10px;
   background-image: url(../img/partners.png);
+}
+
+.services {
+  margin-bottom: 120px;
+}
+
+.services__list {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  margin-top: 65px;
+}
+
+.services__item {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: end;
+  align-items: flex-end;
+  -webkit-box-pack: center;
+  justify-content: center;
+  width: 320px;
+  height: 370px;
+  border-radius: 5px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
+}
+
+.services__item:nth-child(2) {
+  -webkit-transform: scale(1.02);
+  transform: scale(1.02);
+  background: #fff;
+}
+
+.services__caption {
+  color: #47667e;
+  font-size: 24px;
+  text-align: center;
+  margin-top: 45px;
+  margin-bottom: 40px;
+}
+
+.advantages {
+  padding-top: 1px;
+  padding-bottom: 130px;
+  background: #fff url("../img/advantages.jpg") 0 0/cover;
+}
+
+.advantages__list {
+  margin-top: 15px;
+  display: -webkit-box;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  list-style: none;
+}
+
+.advantages__item {
+  margin-top: 75px;
+  width: 25%;
+  min-width: 250px;
+}
+
+.advantages__caption {
+  margin-top: 20px;
+  font-family: 'DINPro-Light';
+  font-size: 20px;
+  color: #47667e;
 }
