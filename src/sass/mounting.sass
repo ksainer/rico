@@ -1,0 +1,67 @@
+.mounting
+	position: relative
+	padding-bottom: 80px
+	&::after
+		position: absolute
+		left: 50%
+		bottom: 0
+		transform: translateX(-50%)
+		content: ''
+		width: 750px
+		height: 1px
+		background-color: #ebebeb
+	&__title
+		font-family: 'DINPro-Black', serif
+		position: relative
+		background-color: $green
+		text-align: center
+		color: #fff
+		font-size: 44px
+		padding: 30px
+		margin: 0
+		&::before
+			content: ''
+			position: absolute
+			left: 50%
+			bottom: 0
+			width: 15px
+			height: 15px
+			background-color: $green
+			transform: translate(-50%, 50%) rotate(45deg)
+	&__button
+		display: block
+		margin: auto
+		margin-top: 90px
+		min-width: 215px
+	&__wrap
+		display: flex
+		justify-content: center
+		align-items: center
+		margin-top: 90px
+		padding: 0 30px
+	&__list
+		width: 540px
+
+.m-item
+	display: flex
+	align-items: flex-start
+	max-width: 450px
+	font-family: 'DINPro', serif
+	margin-bottom: 65px
+	&__img
+		margin-right: 30px
+	&__name
+		font-family: 'DINPro-Black', serif
+		margin: 0
+		margin-bottom: 10px
+		font-size: 28px
+		color: #90aeba
+	&:first-child &__name
+		color: $orange
+	&:last-child &__name
+		color: #07b0ff
+	&__desc
+		margin: 0
+		font-size: 16px
+		line-height: 1.2
+		color: #828282

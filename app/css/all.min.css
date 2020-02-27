@@ -7,6 +7,13 @@
 
 @font-face {
   font-family: 'DINPro';
+  src: url("../fonts/DINPro.woff");
+  font-style: normal;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'DINPro-Black';
   src: url("../fonts/DINPro-Black.woff");
   font-style: normal;
   font-weight: 400;
@@ -41,7 +48,6 @@
 }
 
 * {
-  outline: 1px dashed orange;
   box-sizing: border-box;
 }
 
@@ -70,13 +76,16 @@ figure, ul {
   color: #fff;
   text-transform: uppercase;
   font-size: 20px;
-  font-family: 'DINPro', serif;
+  font-family: 'DINPro-Black', serif;
+  cursor: pointer;
+  outline: none;
 }
 
 .title {
   font-size: 44px;
   color: #093b5f;
   text-align: center;
+  font-family: 'DINPro-Black', serif;
 }
 
 .header {
@@ -152,9 +161,8 @@ figure, ul {
 .header__title {
   margin-top: 140px;
   margin-bottom: 10px;
-  font-family: 'DINPro', serif;
-  color: #093b5f;
   font-size: 54px;
+  text-align: left;
 }
 
 .header__text {
@@ -228,7 +236,7 @@ figure, ul {
 .advantages {
   padding-top: 1px;
   padding-bottom: 130px;
-  background: #fff url("../img/advantages.jpg") 0 0/cover;
+  background: #fff url("../img/advantages.jpg") center/cover;
 }
 
 .advantages__list {
@@ -251,4 +259,145 @@ figure, ul {
   font-family: 'DINPro-Light';
   font-size: 20px;
   color: #47667e;
+}
+
+.mounting {
+  position: relative;
+  padding-bottom: 80px;
+}
+
+.mounting::after {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  content: '';
+  width: 750px;
+  height: 1px;
+  background-color: #ebebeb;
+}
+
+.mounting__title {
+  font-family: 'DINPro-Black', serif;
+  position: relative;
+  background-color: #00bd6f;
+  text-align: center;
+  color: #fff;
+  font-size: 44px;
+  padding: 30px;
+  margin: 0;
+}
+
+.mounting__title::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 15px;
+  height: 15px;
+  background-color: #00bd6f;
+  -webkit-transform: translate(-50%, 50%) rotate(45deg);
+  transform: translate(-50%, 50%) rotate(45deg);
+}
+
+.mounting__button {
+  display: block;
+  margin: auto;
+  margin-top: 90px;
+  min-width: 215px;
+}
+
+.mounting__wrap {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+  margin-top: 90px;
+  padding: 0 30px;
+}
+
+.mounting__list {
+  width: 540px;
+}
+
+.m-item {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: start;
+  align-items: flex-start;
+  max-width: 450px;
+  font-family: 'DINPro', serif;
+  margin-bottom: 65px;
+}
+
+.m-item__img {
+  margin-right: 30px;
+}
+
+.m-item__name {
+  font-family: 'DINPro-Black', serif;
+  margin: 0;
+  margin-bottom: 10px;
+  font-size: 28px;
+  color: #90aeba;
+}
+
+.m-item:first-child .m-item__name {
+  color: #fd7538;
+}
+
+.m-item:last-child .m-item__name {
+  color: #07b0ff;
+}
+
+.m-item__desc {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.2;
+  color: #828282;
+}
+
+.work {
+  padding-top: 60px;
+}
+
+.work__title {
+  margin-top: 0;
+  margin-bottom: 95px;
+}
+
+.work__row {
+  margin: auto;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  max-width: 750px;
+  height: 340px;
+}
+
+.work__col {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  flex-direction: column;
+  -webkit-box-align: center;
+  align-items: center;
+  width: 33.33%;
+}
+
+.work__col:nth-child(2) {
+  -webkit-box-pack: end;
+  justify-content: flex-end;
+}
+
+.work__cap {
+  font-family: 'DINPro-Bold', serif;
+  font-size: 20px;
+  color: #47667e;
+  margin: 25px 0;
 }
