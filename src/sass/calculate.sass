@@ -1,0 +1,142 @@
+%form-section
+	padding: 24px 50px
+	@media screen and ( max-width: 800px )
+		padding: 24px 35px
+	@media screen and ( max-width: 600px )
+		padding: 24px 25px
+	@media screen and ( max-width: 400px )
+		padding: 24px 20px
+
+.calculate
+	background: #fafafa
+	padding-top: 1px
+	margin-bottom: 130px
+	&__form
+		max-width: 1170px
+		width: 100%
+		margin: auto
+		background-color: #fff
+		box-shadow: 0 0 15px rgba(0,0,0,.15)
+		border-radius: 8px
+	&__title
+		display: flex
+		align-items: center
+		background-color: $green
+		padding: 32px 50px
+		margin: 0
+		font-size: 36px
+		color: #fff
+		font-family: 'DINPro-Black', serif
+		border-radius: 8px 8px 0 0
+		@media screen and ( max-width: 800px )
+			font-size: 32px
+			padding: 26px 35px
+		@media screen and ( max-width: 600px )
+			font-size: 26px
+			padding: 22px 25px
+		@media screen and ( max-width: 400px )
+			font-size: 22px
+			padding: 20px
+	&__top-line
+		@extend %form-section
+		display: flex
+		justify-content: space-between
+		border-bottom: 1px solid #ebebeb
+
+
+	// block size
+	&__size
+		width: 100%
+		font-size: 0
+		margin-right: 10px
+		&-body
+			white-space: nowrap
+			display: flex
+	&__text
+		margin-top: 20px
+		margin-bottom: 12px
+		font-size: 18px
+		font-family: 'DINPro-Medium', serif
+	&__input
+		width: 100%
+		min-width: 100px
+		height: 40px
+		padding: 0 15px
+		border: 1px solid $border
+		border-radius: 3px
+		outline: none
+		font-size: 18px
+		font-family: 'DINPro', serif
+		&:focus
+			border: 2px solid $orange
+	&__x
+		color: $border
+		font-size: 20px
+		margin: 0 15px
+		line-height: 40px
+
+	// block prod
+	&__prod
+		font-size: 0
+		white-space: nowrap
+	&__icon
+		display: inline-block
+		width: 100px
+		height: 45px
+		border: 1px solid #ededed
+		border-radius: 3px
+		margin-right: 10px
+		background: url('../img/prod-icon2.jpg') no-repeat center / 70%
+	&__radio
+		display: none
+		&:checked ~ .calculate__icon
+			border: 2px solid $orange
+	&__label
+		&:first-of-type .calculate__icon
+			background-image: url('../img/prod-icon1.jpg')
+		&:last-of-type .calculate__icon
+			background-image: url('../img/prod-icon3.jpg')
+
+	//block type
+	&__type
+		width: 100%
+	&__select
+		width: 100%
+		height: 40px
+		padding: 0 15px
+		border: 1px solid $border
+		border-radius: 3px
+		outline: none
+		font-size: 18px
+		font-family: 'DINPro', serif
+		color: #777777
+	@media screen and ( max-width: 1000px )
+		&__top-line
+			flex-direction: column
+		&__text
+			margin-top: 20px
+	@media screen and ( max-width: 400px )
+		&__icon
+			display: block
+			margin-bottom: 10px
+	
+	&__count-section
+		@extend %form-section
+		&-wrap
+			display: flex
+			justify-content: space-between
+	&__c-icon
+		padding: 7px
+		width: 310px
+		height: 200px
+		background: url('../img/window2.jpg') no-repeat 0 0 / contain
+		background-origin: content-box
+		border: 1px solid $border
+		border-radius: 1px
+	&__c-label:first-child .calculate__c-icon
+		width: 150px
+		background-image: url('../img/window1.jpg')
+	&__c-label:last-child .calculate__c-icon
+		width: 466px
+		background-image: url('../img/window3.jpg')
+		

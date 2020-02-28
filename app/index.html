@@ -184,5 +184,61 @@
 			<div class="work__col"></div>
 		</div>
 	</section>
+	<section class="calculate">
+		<div class="wrapper">
+			<form action="/" class="calculate__form">
+				<h3 class="calculate__title">Рассчитайте стоимость вашего&nbsp;окна</h3>
+				<section class="calculate__top-line">
+					<div class="calculate__size">
+						<p class="calculate__text">Размер окна, мм</p>
+						<div class="calculate__size-body">
+							<input type="number" class="calculate__input" placeholder="Ширина" min="0" step="10"><span class="calculate__x">x</span>
+							<input type="number" class="calculate__input" placeholder="Высота" min="0" step="10">
+						</div>
+					</div>
+					<div class="calculate__prod">
+						<p class="calculate__text">Производитель</p>
+						<label class="calculate__label">
+							<input type="radio" class="calculate__radio" name="prod">
+							<div class="calculate__icon"></div>
+						</label>
+						<label class="calculate__label">
+							<input type="radio" class="calculate__radio" name="prod">
+							<div class="calculate__icon"></div>
+						</label>
+						<label class="calculate__label">
+							<input type="radio" class="calculate__radio" name="prod">
+							<div class="calculate__icon"></div>
+						</label>
+					</div>
+					<div class="calculate__type">
+						<p class="calculate__text">Тип профиля</p>
+						<select name="type" class="calculate__select">
+							<option value="0" disabled selected>Выбрать</option>
+							<option value="1">Тип 1</option>
+							<option value="2">Тип 2</option>
+						</select>
+					</div>
+				</section>
+				<section class="calculate__count-section">
+					<p class="calculate__text">Количество секций</p>
+					<div class="calculate__count-section-wrap">
+						<label class="calculate__c-label">
+							<input type="radio" class="calculate__c-radio" name="count-section">
+							<div class="calculate__c-icon"></div>
+						</label>
+						<label class="calculate__c-label">
+							<input type="radio" class="calculate__c-radio" name="count-section">
+							<div class="calculate__c-icon"></div>
+						</label>
+						<label class="calculate__c-label">
+							<input type="radio" class="calculate__c-radio" name="count-section">
+							<div class="calculate__c-icon"></div>
+						</label>
+					</div>
+				</section>
+			</form>
+		</div>
+	</section>
 </body>
 </html>
