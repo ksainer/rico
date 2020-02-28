@@ -4,12 +4,11 @@ $orange: #fd7538
 
 %blue-text
 	text-transform: uppercase
-	font-family: 'DINPro', serif
+	font-family: 'DINPro-Black', serif
 	color: $blue
 *
 	// outline: 1px dashed orange
 	box-sizing: border-box
-
 body
 	padding: 0
 	margin: 0
@@ -19,21 +18,32 @@ figure, ul
 	padding: 0
 .wrapper
 	margin: 0 auto
-	max-width: 1170px
+	max-width: 1230px
 	width: 100%
 	padding: 0 30px
+	@media screen and ( max-width: 736px )
+		padding: 0 20px
+	@media screen and ( max-width: 568px )
+		padding: 0 10px
+		
 .button
 	background: url(../img/btn.png) 0 0 / 100% 100% no-repeat
 	border: none
-	padding: 20px 35px
+	padding: 18px 35px
 	color: #fff
 	text-transform: uppercase
 	font-size: 20px
 	font-family: 'DINPro-Black', serif
 	cursor: pointer
 	outline: none
+	white-space: nowrap
 .title
 	font-size: 44px
 	color: $blue
 	text-align: center
 	font-family: 'DINPro-Black', serif
+	@media screen and ( max-width: 736px )
+		font-size: 38px
+	@media screen and ( max-width: 568px )
+		font-size: 34px
+		

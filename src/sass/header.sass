@@ -1,13 +1,24 @@
 .header
-	height: 100vh
+	position: relative
 	&__top-line
-		display: flex
-		justify-content: space-between
-		align-items: center
-		height: 97px
+		position: fixed
+		width: 100%
+		top: 0
+		left: 0
+		padding-top: 5px
+		background-color: #fff
+		z-index: 5
+		& .wrapper
+			// height: 97px
+			display: flex
+			justify-content: space-between
+			align-items: center
 	&__contacts
 		display: flex
 		align-items: center
+		justify-content: flex-end
+		flex-wrap: wrap
+		flex-grow: 0
 	&__phone
 		text-transform: uppercase
 		text-decoration: none
@@ -18,14 +29,16 @@
 			text-decoration: underline
 	&__button
 		@extend %blue-text
-		margin-left: 30px
+		margin: 5px 0 5px 30px
 		padding: 7px 15px
 		border: 2px solid $orange
 		border-radius: 5px
 		background: transparent
 		font-size: 16px
 		transition: border .1s
-		&:hover
+		outline: none
+		white-space: nowrap
+		&:hover, &:focus
 			cursor: pointer
 			border-top: 1px solid $orange
 			border-left: 1px solid $orange
@@ -34,20 +47,28 @@
 			&:active
 				border: 2px solid $orange
 	&__body
-		background: #d2cfcc url(../img/header.jpg) no-repeat
+		min-height: calc( 100vh - 97px )
+		margin-top: 97px
+		padding-bottom: 50px
+		background-color: #d9d7d4
+		background-image: url(../img/header.jpg)
 		background-position: center right
+		background-repeat: no-repeat
 		background-size: auto 100%
-		height: 100%
-		max-height: calc(100vh - 97px)
 		display: flex
-		justify-content: start
-		align-items: start
-
+		justify-content: flex-start
+		align-items: flex-start
+		@media screen and ( max-width: 1330px )
+			background-image: url(../img/header.jpg)
+		@media screen and ( max-width: 1100px )
+			background-position: top center
+			background-size: cover
 	&__title
 		margin-top: 140px
 		margin-bottom: 10px
 		font-size: 54px
 		text-align: left
+		max-width: 870px
 	&__text
 		margin: 0
 		font-size: 22px
@@ -56,14 +77,61 @@
 		&:last-of-type
 			color: #aaa7a5
 			font-size: 20px
-
 	&__body-button
 		margin-top: 50px
 		margin-bottom: 70px
 		font-size: 24px
 		width: 330px
 	&__partners
-		width: 420px
+		max-width: 420px
+		width: 100%
 		height: 57px
 		margin-top: 10px
-		background-image: url(../img/partners.png)
+		background: url(../img/partners.png) no-repeat 0 0 / contain
+
+.logo
+	&__img
+		max-width: 100%
+@media screen and ( max-width: 1000px )
+	.header
+		&__title
+			margin-top: 120px
+			font-size: 44px
+			max-width: 85%
+		&__text
+			font-size: 20px
+		&__body-button
+			font-size: 22px
+			width: 300px
+
+@media screen and ( max-width: 800px )
+	.header
+		&__title
+			margin-top: 100px
+			font-size: 36px
+		&__body-button
+			font-size: 20px
+			width: 280px
+
+@media screen and ( max-width: 700px )
+	.header
+		&__title
+			margin-top: 80px
+			font-size: 32px
+		&__text
+			font-size: 18px
+		&__body-button
+			font-size: 20px
+			width: 280px
+
+@media screen and ( max-width: 600px )
+	.header
+		&__title
+			margin-top: 60px
+			font-size: 28px
+			max-width: 100%
+		&__text
+			font-size: 16px
+		&__body-button
+			font-size: 18px
+			width: 250px

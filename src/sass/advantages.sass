@@ -2,6 +2,9 @@
 	padding-top: 1px
 	padding-bottom: 130px
 	background: #fff url('../img/advantages.jpg') center / cover
+	text-align: center
+	@media screen and ( max-width: 765px )
+		padding-bottom: 80px
 	&__list
 		margin-top: 15px
 		display: flex
@@ -12,8 +15,11 @@
 		margin-top: 75px
 		width: 25%
 		min-width: 250px
+		@media screen and ( max-width: 650px )
+			min-width: 0
+			width: 50%
 	&__caption
 		margin-top: 20px
-		font-family: 'DINPro-Light'
+		font-family: 'DINPro'
 		font-size: 20px
 		color: #47667e

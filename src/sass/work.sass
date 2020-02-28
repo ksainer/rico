@@ -1,5 +1,6 @@
 .work
 	padding-top: 60px
+	margin-bottom: 130px
 	&__title
 		margin-top: 0
 		margin-bottom: 95px
@@ -7,17 +8,105 @@
 		margin: auto
 		display: flex
 		justify-content: space-between
-		max-width: 750px
+		max-width: 800px
 		height: 340px
+		&:nth-of-type(2) .work__col:nth-of-type(3)
+			margin-top: -50px
+		&:last-child .work__col:first-child
+			margin-top: -30px
 	&__col
+		position: relative
 		display: flex
 		flex-direction: column
 		align-items: center
 		width: 33.33%
 		&:nth-child(2)
 			justify-content: flex-end
+		&::after
+			content: ''
+			position: absolute
+			top: 35%
+			left: 75%
+			width: 40%
+			height: 87px
+			background-image: url('../img/arrow1.png')
+			background-size: 100% 100%
+	&__row:nth-of-type(1)
+		& .work__col:nth-child(2)::after
+			height: 39px
+			top: 60%
+			left: 90%
+			background-image: url('../img/arrow2.png')
+		& .work__col:nth-child(3)::after
+			display: none
+	&__row:nth-of-type(2)
+		& .work__col:nth-child(3)::after
+			display: none
+		& .work__col:nth-child(2)::after
+			height: 62px
+			top: 50%
+			left: 100%
+			background-image: url('../img/arrow3.png')
+		& .work__col:nth-child(1)::after
+			height: 61px
+			top: 60%
+			left: 70%
+			background-image: url('../img/arrow4.png')
+	&__row:nth-of-type(3)
+		& .work__col:nth-child(2)::after, & .work__col:nth-child(3)::after
+			display: none		
+		& .work__col:nth-child(1)::after
+			height: 83px
+			top: 50%
+			left: 60%
+			background-image: url('../img/arrow5.png')
+	@media screen and ( max-width: 568px )
+		transform: scale(.8)
+		&__row
+			// margin-bottom: 50px
+		&__row:nth-of-type(1)
+			& .work__col:nth-child(1)::after
+				top: 55%
+				left: 55%
+				height: 47px
+			& .work__col:nth-child(2)::after
+				top: 65%
+				left: 110%
+				height: 39px
+				width: 60%
+		&__row:nth-of-type(2)
+			margin-bottom: 100px
+			& .work__col:nth-child(2)
+				margin-bottom: -50px
+				&::after
+					height: 52px
+					top: 43%
+					left: 130%
+			& .work__col:nth-child(1)::after
+				top: 90%
+				left: 30%
+				width: 60%
+		&__row:nth-of-type(3)
+				& .work__col:nth-child(1)::after
+					height: 53px
+					top: 40%
+					left: 40%
+					
 	&__cap
+		position: relative
+		text-align: center
 		font-family: 'DINPro-Bold', serif
 		font-size: 20px
 		color: #47667e
-		margin: 25px 0
+		margin: 25px 0 25px 20px
+	&__num
+		position: absolute
+		font-family: 'GothamPro-Black', serif
+		font-size: 54px
+		color: #d2dade
+		top: 50%
+		left: 0
+		transform: translate(-130%,-50%)
+	&__button
+		font-size: 16px
+		padding: 11px 23px
