@@ -149,39 +149,41 @@
 	</section>
 	<section class="work">
 		<h2 class="work__title title">Как мы работаем</h2>
-		<div class="work__row">
-			<div class="work__col">
-				<img src="img/work1.png" alt="how we work" class="work__img">
-				<p class="work__cap"><span class="work__num">1</span>Заявка</p>
-				<button class="work__button button">Оставить заявку</button>
+		<div class="work__wrap">
+			<div class="work__row">
+				<div class="work__col">
+					<img src="img/work1.png" alt="how we work" class="work__img">
+					<p class="work__cap"><span class="work__num">1</span>Заявка</p>
+					<button class="work__button button">Оставить заявку</button>
+				</div>
+				<div class="work__col">
+					<img src="img/work2.png" alt="how we work" class="work__img">
+					<p class="work__cap"><span class="work__num">2</span>Замер</p>
+				</div>
+				<div class="work__col"></div>
 			</div>
-			<div class="work__col">
-				<img src="img/work2.png" alt="how we work" class="work__img">
-				<p class="work__cap"><span class="work__num">2</span>Замер</p>
+			<div class="work__row">
+				<div class="work__col"></div>
+				<div class="work__col">
+					<img src="img/work3.png" alt="how we work" class="work__img">
+					<p class="work__cap"><span class="work__num">4</span>Производство</p>
+				</div>
+				<div class="work__col">
+					<img src="img/work4.png" alt="how we work" class="work__img">
+					<p class="work__cap"><span class="work__num">3</span>Подписание<br>договора</p>
+				</div>
 			</div>
-			<div class="work__col"></div>
-		</div>
-		<div class="work__row">
-			<div class="work__col"></div>
-			<div class="work__col">
-				<img src="img/work3.png" alt="how we work" class="work__img">
-				<p class="work__cap"><span class="work__num">4</span>Производство</p>
+			<div class="work__row">
+				<div class="work__col">
+					<img src="img/work5.png" alt="how we work" class="work__img">
+					<p class="work__cap"><span class="work__num">5</span>Доставка</p>
+				</div>
+				<div class="work__col">
+					<img src="img/work6.png" alt="how we work" class="work__img">
+					<p class="work__cap"><span class="work__num">6</span>Монтаж</p>
+				</div>
+				<div class="work__col"></div>
 			</div>
-			<div class="work__col">
-				<img src="img/work4.png" alt="how we work" class="work__img">
-				<p class="work__cap"><span class="work__num">3</span>Подписание<br>договора</p>
-			</div>
-		</div>
-		<div class="work__row">
-			<div class="work__col">
-				<img src="img/work5.png" alt="how we work" class="work__img">
-				<p class="work__cap"><span class="work__num">5</span>Доставка</p>
-			</div>
-			<div class="work__col">
-				<img src="img/work6.png" alt="how we work" class="work__img">
-				<p class="work__cap"><span class="work__num">6</span>Монтаж</p>
-			</div>
-			<div class="work__col"></div>
 		</div>
 	</section>
 	<section class="calculate">
@@ -199,7 +201,7 @@
 					<div class="calculate__prod">
 						<p class="calculate__text">Производитель</p>
 						<label class="calculate__label">
-							<input type="radio" class="calculate__radio" name="prod">
+							<input type="radio" class="calculate__radio" name="prod" checked>
 							<div class="calculate__icon"></div>
 						</label>
 						<label class="calculate__label">
@@ -222,20 +224,67 @@
 				</section>
 				<section class="calculate__count-section">
 					<p class="calculate__text">Количество секций</p>
-					<div class="calculate__count-section-wrap">
-						<label class="calculate__c-label">
-							<input type="radio" class="calculate__c-radio" name="count-section">
-							<div class="calculate__c-icon"></div>
-						</label>
-						<label class="calculate__c-label">
-							<input type="radio" class="calculate__c-radio" name="count-section">
-							<div class="calculate__c-icon"></div>
-						</label>
-						<label class="calculate__c-label">
-							<input type="radio" class="calculate__c-radio" name="count-section">
-							<div class="calculate__c-icon"></div>
-						</label>
+					<div class="calculate__count-section-body">
+						<div class="calculate__c-item">
+							<label class="calculate__c-label">
+								<input type="radio" class="calculate__c-radio" name="count-section" checked>
+								<div class="calculate__c-icon">
+									<img src="img/window1.jpg" alt="one section window" class="calculate__c-img">
+								</div>
+							</label>
+							<div class="calculate__c-select-wrap">
+								<select name="one" class="calculate__c-select">
+									<option value="1">Глухая</option>
+									<option value="2">Поворотная</option>
+									<option value="3">Поворотна-откидная</option>
+								</select>
+							</div>
+						</div>
+
+						<div class="calculate__c-item">
+							<label class="calculate__c-label">
+								<input type="radio" class="calculate__c-radio" name="count-section">
+								<div class="calculate__c-icon">
+									<img src="img/window2.jpg" alt="two section window" class="calculate__c-img">
+								</div>
+							</label>
+							<div class="calculate__c-select-wrap">
+								<select name="two-one" class="calculate__c-select">
+									<option value="1">Глухая</option>
+									<option value="2">Поворотная</option>
+									<option value="3">Поворотна-откидная</option>
+								</select>
+								<select name="two-two" class="calculate__c-select">
+									<option value="1">Глухая</option>
+									<option value="2">Поворотная</option>
+									<option value="3">Поворотна-откидная</option>
+								</select>
+							</div>
+						</div>
+
+						<div class="calculate__c-item">
+							<label class="calculate__c-label">
+								<input type="radio" class="calculate__c-radio" name="count-section">
+								<div class="calculate__c-icon">
+									<img src="img/window3.jpg" alt="three section window" class="calculate__c-img">
+								</div>
+							</label>
+						</div>
 					</div>
+					<a href="#" class="calculate__diff-type">Нужен другой тип окна</a>
+				</section>
+				<section class="calculate__bottom-line">
+					<div class="calculate__b-right-col">
+						<div class="calculate__total">
+							<span class="calculate__t-cost">23 900 руб</span>
+							<span class="calculate__t-desc">Стоимость Вашего окна<br>с учетом монтажных работ</span>
+						</div>
+						<div class="calculate__avarage">
+							<span class="calculate__a-cost">26 900 руб</span>
+							<span class="calculate__a-desc">Средняя цена по Москве</span>
+						</div>
+					</div>
+					<button class="calculate__button button">Заказать точный размер</button>
 				</section>
 			</form>
 		</div>

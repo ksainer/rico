@@ -1,5 +1,6 @@
 %form-section
 	padding: 24px 50px
+	border-bottom: 1px solid #ebebeb
 	@media screen and ( max-width: 800px )
 		padding: 24px 35px
 	@media screen and ( max-width: 600px )
@@ -41,7 +42,7 @@
 		@extend %form-section
 		display: flex
 		justify-content: space-between
-		border-bottom: 1px solid #ebebeb
+		padding-top: 30px
 
 
 	// block size
@@ -52,15 +53,17 @@
 		&-body
 			white-space: nowrap
 			display: flex
+			align-content: space-between
 	&__text
-		margin-top: 20px
+		margin-top: 0
 		margin-bottom: 12px
+		text-align: left
 		font-size: 18px
 		font-family: 'DINPro-Medium', serif
 	&__input
 		width: 100%
 		min-width: 100px
-		height: 40px
+		height: 42px
 		padding: 0 15px
 		border: 1px solid $border
 		border-radius: 3px
@@ -79,19 +82,24 @@
 	&__prod
 		font-size: 0
 		white-space: nowrap
+		padding: 0 40px
 	&__icon
 		display: inline-block
-		width: 100px
-		height: 45px
+		width: 110px
+		height: 50px
 		border: 1px solid #ededed
 		border-radius: 3px
 		margin-right: 10px
-		background: url('../img/prod-icon2.jpg') no-repeat center / 70%
+		background: url('../img/prod-icon2.jpg') no-repeat center / contain
+		background-origin: content-box
+		padding: 7px 10px
+
 	&__radio
 		display: none
 		&:checked ~ .calculate__icon
 			border: 2px solid $orange
 	&__label
+		cursor: pointer
 		&:first-of-type .calculate__icon
 			background-image: url('../img/prod-icon1.jpg')
 		&:last-of-type .calculate__icon
@@ -102,7 +110,7 @@
 		width: 100%
 	&__select
 		width: 100%
-		height: 40px
+		height: 42px
 		padding: 0 15px
 		border: 1px solid $border
 		border-radius: 3px
@@ -110,33 +118,129 @@
 		font-size: 18px
 		font-family: 'DINPro', serif
 		color: #777777
+		cursor: pointer
+		&:focus
+			border-color: #000
+			
 	@media screen and ( max-width: 1000px )
 		&__top-line
 			flex-direction: column
-		&__text
-			margin-top: 20px
+		&__prod
+			padding: 0
 	@media screen and ( max-width: 400px )
 		&__icon
 			display: block
 			margin-bottom: 10px
 	
+
+	// === COUNT SECTION ===
 	&__count-section
 		@extend %form-section
-		&-wrap
+		padding-bottom: 12px
+		text-align: right
+		&-body
 			display: flex
 			justify-content: space-between
+			font-size: 0
+	&__c-label
+		cursor: pointer
+	&__c-item
+		display: flex
+		flex-direction: column
+		justify-content: space-between
+		&:not(:last-child)
+			margin-right: 35px
 	&__c-icon
 		padding: 7px
-		width: 310px
-		height: 200px
-		background: url('../img/window2.jpg') no-repeat 0 0 / contain
-		background-origin: content-box
 		border: 1px solid $border
 		border-radius: 1px
-	&__c-label:first-child .calculate__c-icon
-		width: 150px
-		background-image: url('../img/window1.jpg')
-	&__c-label:last-child .calculate__c-icon
-		width: 466px
-		background-image: url('../img/window3.jpg')
+	&__c-img
+		width: 100%
+	&__c-radio
+		display: none
+		&:checked ~ .calculate__c-icon
+			outline: 2px solid $orange
+
+	&__c-select
+		width: 100%
+		height: 27px
+		margin: 20px 0 8px
+		border: 1px solid $border
+		border-radius: 2px
+		outline: none
+		font-size: 13px
+		font-family: 'DINPro', serif
+		color: #777777
+		cursor: pointer
+		& + &
+			margin-left: 10px
+		&-wrap
+			display: flex
+
+	&__diff-type
+		font-size: 14px
+		color: $orange
+		text-decoration: none
+		font-family: 'DINPro-Medium'
+		&:hover
+			text-decoration: underline
+
+	@media screen and ( max-width: 600px )
+		&__count-section-body
+			flex-wrap: wrap
+			justify-content: flex-start
+		&__c-item
+			margin-bottom: 30px
+		&__c-item
+			&:not(:last-child)
+				margin-right: 15px
+		&__c-icon
+			padding: 4px
+
+	&__bottom-line
+		@extend %form-section
+		display: flex
+		justify-content: space-between
+		align-items: flex-end
+		flex-wrap: wrap
+		padding-bottom: 30px
+	&__b-right-col
+
+	&__total
+		display: flex
+		align-items: center
+		flex-wrap: wrap
+		margin-bottom: 5px
+	&__t-cost
+		margin-top: -10px
+		margin-right: 13px
+		font-family: 'DINPro-Black', serif
+		font-size: 50px
+		color: $green
+		white-space: nowrap
+	&__t-desc
+		font-family: 'DINPro-Medium', serif
+		font-size: 14px
+		color: $green
+
+	&__a-cost
+		margin-right: 10px
+		font-family: 'DINPro-Black', serif
+		font-size: 28px
+		color: #8e8e8e
+		white-space: nowrap
+	&__a-desc
+		font-family: 'DINPro-Medium', serif
+		font-size: 14px
+		color: #8e8e8e
+		white-space: nowrap
+	&__button
+		margin-left: auto
+		margin-top: 25px
+		@media screen and ( max-width: 600px )
+			width: 100%
+			
+		@media screen and ( max-width: 410px )
+			font-size: 16px
+			padding: 15px 20px
 		
