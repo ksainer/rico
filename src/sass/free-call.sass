@@ -1,0 +1,80 @@
+.free-call
+	padding: 1px 10px
+	height: 570px
+	background: #ebebeb url('../img/map.jpg') no-repeat 0 0 / cover
+	&__form
+		max-width: 900px
+		margin: auto
+		margin-top: -70px
+		padding: 25px 45px 40px
+		background-color: #fff
+		text-align: center
+		border-radius: 5px
+		box-shadow: 0 0 15px rgba(0,0,0,.25)
+	&__title
+		margin-top: 0
+		margin-bottom: 15px
+		font-family: 'DINPro-Black', serif
+		font-size: 34px
+		color: $blue
+	&__text
+		max-width: 670px
+		margin-top: 0
+		margin-bottom: 45px
+		font-family: 'DINPro-Medium', serif
+		font-size: 18px
+		color: #446278
+		&-orange
+			text-decoration: none
+			font-family: 'DINPro-Black', serif
+			color: $orange
+			&[href]
+				white-space: nowrap
+				&:hover
+					text-decoration: underline
+	&__bottom
+		display: flex
+		align-items: center
+		justify-content: space-between
+		& .discount__button
+			margin-top: 0
+		& .discount__input-wrap
+			max-width: 350px
+			width: 100%
+			margin-bottom: 0
+			margin-right: 15px
+	&__input-wrap-outer
+		display: flex
+		justify-content: space-between
+		max-width: 555px
+		width: 100%
+	&__button
+		min-width: 210px
+
+	@media screen and ( max-width: 800px )
+		&__input-wrap-outer
+			flex-wrap: wrap
+		&__bottom
+			& .discount__input-wrap:first-child
+				margin-bottom: 15px
+	@media screen and ( max-width: 600px )
+		&__form
+			padding-left: 20px
+			padding-right: 20px
+		&__title
+			font-size: 28px
+		&__text
+			font-size: 14px
+		&__input-wrap-outer
+			justify-content: center
+			margin-bottom: 25px
+		&__bottom
+			flex-wrap: wrap
+			justify-content: center
+			& .discount__input-wrap
+				margin-right: 0
+	@media screen and ( max-width: 480px )
+		&__title
+			font-size: 24px
+		
+	
