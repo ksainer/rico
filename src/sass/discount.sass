@@ -1,0 +1,88 @@
+.discount
+	margin-bottom: 170px
+	background: url('../img/discount-bg.jpg') no-repeat 0 35%
+	&__form
+		max-width: 400px
+		margin-left: auto
+		background-color: #fff
+		border-radius: 5px
+		box-shadow: 0 0 15px rgba(0,0,0,.15)
+		text-align: center
+	&__title
+		background: $green url(../img/discount-title.jpg)
+		border-radius: 8px 8px 0 0
+		color: #fff
+		font-family: 'DINPro-Black', serif
+		text-shadow: 0px 5px 5px rgba(0,0,0,.35)
+		& p
+			margin: 0
+		&-top
+			display: flex
+			justify-content: center
+			align-items: center
+			padding-top: 3px
+			margin-bottom: 7px
+		&-right-col
+			margin-right: 10px
+			text-transform: uppercase
+			white-space: nowrap
+			& p:first-child
+				font-size: 42px
+			& p:last-child
+				font-family: 'DINPro-Medium', serif
+				font-weight: normal
+				font-size: 17px
+		&-left-col
+			font-size: 77px
+		&-note
+			height: 33px
+			line-height: 33px			
+			background-color: rgba(0,0,0,.2)
+			font-weight: normal
+			font-family: 'DINPro', serif
+			font-size: 16px
+	
+	&__wrap
+		padding: 0 35px 30px
+	
+	&__text
+		margin: 20px 0 40px
+		font-size: 18px
+	&__input
+		width: 100%
+		height: 41px
+		font-size: 16px
+		padding: 0 40px 0 10px
+		margin-bottom: 30px
+		border: 1px solid $border
+		&:focus
+			outline: 2px solid $orange
+
+		&-wrap
+			position: relative
+			&::after
+				content: ''
+				position: absolute
+				top: 8px
+				right: 15px
+				width: 25px
+				height: 25px
+				background: url('../img/user.svg') no-repeat 0 0 / contain
+				opacity: .2
+	&__button
+		width: 100%
+		margin-top: 30px
+	@media screen and ( max-width: 400px )
+		&__title-top
+			transform: scale(.8)
+		&__title-note
+			font-size: 13px
+
+		&__wrap
+			padding: 0 15px 30px
+		&__text
+			font-size: 16px
+			margin-bottom: 30px
+		&__button
+			margin-top: 15px
+		

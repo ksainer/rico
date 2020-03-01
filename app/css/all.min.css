@@ -1162,3 +1162,131 @@ figure, ul {
     padding: 15px 20px;
   }
 }
+
+.discount {
+  margin-bottom: 170px;
+  background: url("../img/discount-bg.jpg") no-repeat 0 35%;
+}
+
+.discount__form {
+  max-width: 400px;
+  margin-left: auto;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
+  text-align: center;
+}
+
+.discount__title {
+  background: #00bd6f url(../img/discount-title.jpg);
+  border-radius: 8px 8px 0 0;
+  color: #fff;
+  font-family: 'DINPro-Black', serif;
+  text-shadow: 0px 5px 5px rgba(0, 0, 0, 0.35);
+}
+
+.discount__title p {
+  margin: 0;
+}
+
+.discount__title-top {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+  padding-top: 3px;
+  margin-bottom: 7px;
+}
+
+.discount__title-right-col {
+  margin-right: 10px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.discount__title-right-col p:first-child {
+  font-size: 42px;
+}
+
+.discount__title-right-col p:last-child {
+  font-family: 'DINPro-Medium', serif;
+  font-weight: normal;
+  font-size: 17px;
+}
+
+.discount__title-left-col {
+  font-size: 77px;
+}
+
+.discount__title-note {
+  height: 33px;
+  line-height: 33px;
+  background-color: rgba(0, 0, 0, 0.2);
+  font-weight: normal;
+  font-family: 'DINPro', serif;
+  font-size: 16px;
+}
+
+.discount__wrap {
+  padding: 0 35px 30px;
+}
+
+.discount__text {
+  margin: 20px 0 40px;
+  font-size: 18px;
+}
+
+.discount__input {
+  width: 100%;
+  height: 41px;
+  font-size: 16px;
+  padding: 0 40px 0 10px;
+  margin-bottom: 30px;
+  border: 1px solid #c8c8c8;
+}
+
+.discount__input:focus {
+  outline: 2px solid #fd7538;
+}
+
+.discount__input-wrap {
+  position: relative;
+}
+
+.discount__input-wrap::after {
+  content: '';
+  position: absolute;
+  top: 8px;
+  right: 15px;
+  width: 25px;
+  height: 25px;
+  background: url("../img/user.svg") no-repeat 0 0/contain;
+  opacity: .2;
+}
+
+.discount__button {
+  width: 100%;
+  margin-top: 30px;
+}
+
+@media screen and (max-width: 400px) {
+  .discount__title-top {
+    -webkit-transform: scale(0.8);
+    transform: scale(0.8);
+  }
+  .discount__title-note {
+    font-size: 13px;
+  }
+  .discount__wrap {
+    padding: 0 15px 30px;
+  }
+  .discount__text {
+    font-size: 16px;
+    margin-bottom: 30px;
+  }
+  .discount__button {
+    margin-top: 15px;
+  }
+}
