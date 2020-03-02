@@ -1,0 +1,64 @@
+.footer
+	background-color: #0f324c
+	font-family: 'DINPro-Medium', serif
+	font-size: 14px
+	color: #708390
+	& .wrapper
+		display: flex
+		justify-content: center
+		align-items: center
+		min-height: 77px
+	&__left-col
+		display: flex
+		align-items: center
+	&__to-up
+		display: block
+		width: 100px
+		line-height: 77px
+		text-align: center
+		text-decoration: none
+		background-color: #133854
+		color: inherit
+		transition: background-color .2s linear
+		&:hover
+			background-color: #174364
+	&__text
+		&_copy
+			margin-left: 35px
+			margin-right: 35px
+			text-transform: uppercase
+			white-space: nowrap
+		&_address
+			position: relative
+			padding-left: 20px
+			&::before
+				position: absolute
+				top: 2px
+				left: 1.5px
+				content: ''
+				display: block
+				width: 3px
+				height: 3px
+				border: 2px solid #708390
+				border-radius: 50%
+			&::after
+				position: absolute
+				top: 8px
+				left: 2px
+				content: ''
+				width: 0
+				height: 0
+				border-style: solid
+				border-width: 6px 2.5px 0 2.5px
+				border-color: #708390 transparent transparent transparent
+
+	&__icon
+		margin-left: auto
+
+	@media screen and ( max-width: 568px )
+		padding-bottom: 15px
+		& .wrapper
+			flex-wrap: wrap
+		&__icon
+			margin-left: 10px
+			margin-right: 10px

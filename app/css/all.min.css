@@ -1256,15 +1256,26 @@ figure, ul {
   margin-bottom: 30px;
 }
 
-.discount__input-wrap::after {
+.discount__input-wrap::before {
   content: '';
   position: absolute;
   top: 8px;
-  right: 15px;
-  width: 25px;
-  height: 25px;
-  background: url("../img/user.svg") no-repeat 0 0/contain;
-  opacity: .2;
+  right: 19px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  border: 2px solid #dedede;
+}
+
+.discount__input-wrap::after {
+  content: '';
+  position: absolute;
+  top: 21px;
+  right: 16px;
+  width: 13px;
+  height: 8px;
+  border-radius: 50% 50% 0 0;
+  border: 2px solid #dedede;
 }
 
 .discount__button {
@@ -1421,5 +1432,98 @@ figure, ul {
 @media screen and (max-width: 480px) {
   .free-call__title {
     font-size: 24px;
+  }
+}
+
+.footer {
+  background-color: #0f324c;
+  font-family: 'DINPro-Medium', serif;
+  font-size: 14px;
+  color: #708390;
+}
+
+.footer .wrapper {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+  min-height: 77px;
+}
+
+.footer__left-col {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+}
+
+.footer__to-up {
+  display: block;
+  width: 100px;
+  line-height: 77px;
+  text-align: center;
+  text-decoration: none;
+  background-color: #133854;
+  color: inherit;
+  -webkit-transition: background-color .2s linear;
+  transition: background-color .2s linear;
+}
+
+.footer__to-up:hover {
+  background-color: #174364;
+}
+
+.footer__text_copy {
+  margin-left: 35px;
+  margin-right: 35px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.footer__text_address {
+  position: relative;
+  padding-left: 20px;
+}
+
+.footer__text_address::before {
+  position: absolute;
+  top: 2px;
+  left: 1.5px;
+  content: '';
+  display: block;
+  width: 3px;
+  height: 3px;
+  border: 2px solid #708390;
+  border-radius: 50%;
+}
+
+.footer__text_address::after {
+  position: absolute;
+  top: 8px;
+  left: 2px;
+  content: '';
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 6px 2.5px 0 2.5px;
+  border-color: #708390 transparent transparent transparent;
+}
+
+.footer__icon {
+  margin-left: auto;
+}
+
+@media screen and (max-width: 568px) {
+  .footer {
+    padding-bottom: 15px;
+  }
+  .footer .wrapper {
+    flex-wrap: wrap;
+  }
+  .footer__icon {
+    margin-left: 10px;
+    margin-right: 10px;
   }
 }
