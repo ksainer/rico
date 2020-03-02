@@ -188,14 +188,14 @@
 	</section>
 	<section class="calculate">
 		<div class="wrapper">
-			<form action="/" class="calculate__form">
+			<div action="/" class="calculate__form">
 				<h2 class="calculate__title">Рассчитайте стоимость вашего&nbsp;окна</h2>
 				<section class="calculate__top-line">
 					<div class="calculate__size">
 						<p class="calculate__text">Размер окна, мм</p>
 						<div class="calculate__size-body">
-							<input type="number" class="calculate__input" placeholder="Ширина" min="0" step="10"><span class="calculate__x">x</span>
-							<input type="number" class="calculate__input" placeholder="Высота" min="0" step="10">
+							<input type="number" class="calculate__input calculate__width" placeholder="Ширина" min="800" max="1200" step="100"><span class="calculate__x">x</span>
+							<input type="number" class="calculate__input calculate__height" placeholder="Высота" min="1000" max="1500" step="100">
 						</div>
 					</div>
 					<div class="calculate__prod">
@@ -215,11 +215,23 @@
 					</div>
 					<div class="calculate__type">
 						<p class="calculate__text">Тип профиля</p>
-						<select name="type" class="calculate__select">
-							<option value="0" disabled selected>Выбрать</option>
-							<option value="1">Тип 1</option>
-							<option value="2">Тип 2</option>
-						</select>
+						<div class="select calculate__select">
+							<label class="select__current-val"><input type="checkbox" class="select__check"><p class="select__text">KBE Engine</p></label>
+							<ul class="select__list" hidden>
+								<li class="select__item">
+									<label class="select__label">
+										<input type="radio" class="select__radio" name="select" checked>
+										<p class="select__text">KBE Engine</p>
+									</label>
+								</li>
+								<li class="select__item">
+									<label class="select__label">
+										<input type="radio" class="select__radio" name="select">
+										<p class="select__text">KBE Expert</p>
+									</label>
+								</li>
+							</ul>
+						</div>
 					</div>
 				</section>
 				<section class="calculate__count-section">
@@ -233,11 +245,31 @@
 								</div>
 							</label>
 							<div class="calculate__c-select-wrap">
-								<select name="one" class="calculate__c-select">
-									<option value="1">Глухая</option>
-									<option value="2">Поворотная</option>
-									<option value="3">Поворотна-откидная</option>
-								</select>
+								<div class="select calculate__c-select">
+									<label class="select__current-val"><input type="checkbox" class="select__check">
+										<p class="select__text">Глухая</p>
+									</label>
+									<ul class="select__list" hidden>
+										<li class="select__item">
+											<label class="select__label">
+												<input type="radio" class="select__radio" name="select" checked>
+												<p class="select__text">Глухая</p>
+											</label>
+										</li>
+										<li class="select__item">
+											<label class="select__label">
+												<input type="radio" class="select__radio" name="select">
+												<p class="select__text">Поворотная</p>
+											</label>
+										</li>
+										<!-- <li class="select__item">
+											<label class="select__label">
+												<input type="radio" class="select__radio" name="select">
+												<p class="select__text">Поворотно-откидная</p>
+											</label>
+										</li> -->
+									</ul>
+								</div>
 							</div>
 						</div>
 
@@ -249,16 +281,54 @@
 								</div>
 							</label>
 							<div class="calculate__c-select-wrap">
-								<select name="two-one" class="calculate__c-select">
-									<option value="1">Глухая</option>
-									<option value="2">Поворотная</option>
-									<option value="3">Поворотна-откидная</option>
-								</select>
-								<select name="two-two" class="calculate__c-select">
-									<option value="1">Глухая</option>
-									<option value="2">Поворотная</option>
-									<option value="3">Поворотна-откидная</option>
-								</select>
+								<div class="select calculate__c-select">
+									<label class="select__current-val"><input type="checkbox" class="select__check"><p class="select__text">Глухая</p></label>
+									<ul class="select__list" hidden>
+										<li class="select__item">
+											<label class="select__label">
+												<input type="radio" class="select__radio" name="select" checked>
+												<p class="select__text">Глухая</p>
+											</label>
+										</li>
+										<li class="select__item">
+											<label class="select__label">
+												<input type="radio" class="select__radio" name="select">
+												<p class="select__text">Поворотная</p>
+											</label>
+										</li>
+										<li class="select__item">
+											<label class="select__label">
+												<input type="radio" class="select__radio" name="select">
+												<p class="select__text">Поворотно-откидная</p>
+											</label>
+										</li>
+									</ul>
+								</div>
+								<div class="select calculate__c-select">
+
+									<label class="select__current-val"><input type="checkbox" class="select__check"><p class="select__text">Глухая</p></label>
+
+									<ul class="select__list" hidden>
+										<li class="select__item">
+											<label class="select__label">
+												<input type="radio" class="select__radio" name="select" checked>
+												<p class="select__text">Глухая</p>
+											</label>
+										</li>
+										<li class="select__item">
+											<label class="select__label">
+												<input type="radio" class="select__radio" name="select">
+												<p class="select__text">Поворотная</p>
+											</label>
+										</li>
+										<li class="select__item">
+											<label class="select__label">
+												<input type="radio" class="select__radio" name="select">
+												<p class="select__text">Поворотно-откидная</p>
+											</label>
+										</li>
+									</ul>
+								</div>
 							</div>
 						</div>
 
@@ -286,7 +356,7 @@
 					</div>
 					<button class="calculate__button button">Заказать точный размер</button>
 				</section>
-			</form>
+			</div>
 		</div>
 	</section>
 	<div class="wrapper">
@@ -340,13 +410,42 @@
 	</section>
 	<footer class="footer">
 		<div class="wrapper">
-			<!-- <div class="footer__left-col"> -->
-				<a href="#header" class="footer__to-up">Наверх</a>
-				<p class="footer__text footer__text_copy">&copy; Рико 2017</p>
-				<p class="footer__text footer__text_address">Москва, <nobr>ул. Вернандского,</nobr> <nobr>стр 4,оф. 715</nobr></p>
-			<!-- </div> -->
+			<a href="#header" class="footer__to-up">Наверх</a>
+			<p class="footer__text footer__text_copy">&copy; Рико 2017</p>
+			<p class="footer__text footer__text_address">Москва, <nobr>ул. Вернандского,</nobr> <nobr>стр 4,оф. 715</nobr></p>
 			<img src="img/pride-icon.png" alt="Pride media logo" class="footer__icon">
 		</div>
 	</footer>
+
+	<!-- <section class="select">
+		<label class="select__current-val"><input type="checkbox" class="select__check"><p class="select__text">text 1</p></label>
+		<ul class="select__list" hidden>
+			<li class="select__item">
+				<label class="select__label">
+					<input type="radio" class="select__radio" name="select" checked>
+					<p class="select__text">text 1</p>
+				</label>
+			</li>
+			<li class="select__item">
+				<label class="select__label">
+					<input type="radio" class="select__radio" name="select">
+					<p class="select__text">text 2</p>
+				</label>
+			</li>
+			<li class="select__item">
+				<label class="select__label">
+					<input type="radio" class="select__radio" name="select">
+					<p class="select__text">text 3</p>
+				</label>
+			</li>
+			<li class="select__item">
+				<label class="select__label">
+					<input type="radio" class="select__radio" name="select">
+					<p class="select__text">text 4</p>
+				</label>
+			</li>
+		</ul>
+	</section> -->
+	<script src="js/main.js"></script>
 </body>
 </html>

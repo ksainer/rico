@@ -964,18 +964,13 @@ figure, ul {
 .calculate__select {
   width: 100%;
   height: 42px;
-  padding: 0 15px;
-  border: 1px solid #c8c8c8;
-  border-radius: 3px;
-  outline: none;
   font-size: 18px;
   font-family: 'DINPro', serif;
-  color: #777777;
-  cursor: pointer;
 }
 
-.calculate__select:focus {
-  border-color: #000;
+.calculate__select .select__text {
+  padding: 0 15px;
+  line-height: 40px;
 }
 
 @media screen and (max-width: 1000px) {
@@ -983,6 +978,9 @@ figure, ul {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
     flex-direction: column;
+  }
+  .calculate__top-line > * {
+    margin-bottom: 15px;
   }
   .calculate__prod {
     padding: 0;
@@ -1049,13 +1047,10 @@ figure, ul {
   width: 100%;
   height: 27px;
   margin: 20px 0 8px;
-  border: 1px solid #c8c8c8;
   border-radius: 2px;
-  outline: none;
   font-size: 13px;
   font-family: 'DINPro', serif;
-  color: #777777;
-  cursor: pointer;
+  text-align: left;
 }
 
 .calculate__c-select + .calculate__c-select {
@@ -1065,6 +1060,23 @@ figure, ul {
 .calculate__c-select-wrap {
   display: -webkit-box;
   display: flex;
+}
+
+.calculate__c-select .select__current-val::before {
+  right: 8px;
+  width: 5px;
+  height: 5px;
+}
+
+.calculate__c-select .select__current-val::after {
+  width: 22px;
+}
+
+.calculate__c-select .select__current-val .select__text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 25px;
 }
 
 .calculate__diff-type {
@@ -1078,7 +1090,7 @@ figure, ul {
   text-decoration: underline;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 900px) {
   .calculate__count-section-body {
     flex-wrap: wrap;
     -webkit-box-pack: start;
@@ -1526,4 +1538,91 @@ figure, ul {
     margin-left: 10px;
     margin-right: 10px;
   }
+}
+
+.select {
+  position: relative;
+}
+
+.select__current-val {
+  display: block;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  border: 1px solid #c8c8c8;
+  border-radius: 3px;
+  color: #777777;
+  cursor: pointer;
+}
+
+.select__current-val::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 16px;
+  width: 9px;
+  height: 9px;
+  border: 1px solid #6f6f6f;
+  border-top: 0;
+  border-left: 0;
+  -webkit-transform: translateY(-70%) rotate(45deg);
+  transform: translateY(-70%) rotate(45deg);
+}
+
+.select__current-val::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 40px;
+  border-left: 1px solid #c8c8c8;
+}
+
+.select__current-val .select__text {
+  width: 100%;
+  padding-right: 40px;
+}
+
+.select__check {
+  position: absolute;
+  opacity: 0;
+}
+
+.select__check:focus + .select__text {
+  outline: 2px solid #fd7538;
+}
+
+.select__list {
+  position: absolute;
+  width: 100%;
+  list-style: none;
+  border: 1px solid #c8c8c8;
+  border-top: 0;
+  z-index: 100;
+  background-color: #fff;
+  border-radius: 0 0 3px 3px;
+}
+
+.select__item:hover .select__text {
+  background-color: #00bd6f !important;
+  color: #fff;
+}
+
+.select__radio {
+  position: absolute;
+  opacity: 0;
+}
+
+.select__radio:checked + .select__text {
+  background-color: #00bd6f;
+  color: #fff;
+}
+
+.select__text {
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  margin: 0;
+  padding: 5px;
 }

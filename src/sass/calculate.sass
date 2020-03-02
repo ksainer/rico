@@ -111,20 +111,17 @@
 	&__select
 		width: 100%
 		height: 42px
-		padding: 0 15px
-		border: 1px solid $border
-		border-radius: 3px
-		outline: none
 		font-size: 18px
 		font-family: 'DINPro', serif
-		color: #777777
-		cursor: pointer
-		&:focus
-			border-color: #000
+		& .select__text
+			padding: 0 15px
+			line-height: 40px
 			
 	@media screen and ( max-width: 1000px )
 		&__top-line
 			flex-direction: column
+			& > *
+				margin-bottom: 15px
 		&__prod
 			padding: 0
 	@media screen and ( max-width: 400px )
@@ -165,17 +162,26 @@
 		width: 100%
 		height: 27px
 		margin: 20px 0 8px
-		border: 1px solid $border
 		border-radius: 2px
-		outline: none
 		font-size: 13px
 		font-family: 'DINPro', serif
-		color: #777777
-		cursor: pointer
+		text-align: left
 		& + &
 			margin-left: 10px
 		&-wrap
 			display: flex
+		& .select__current-val
+			&::before
+				right: 8px
+				width: 5px
+				height: 5px
+			&::after
+				width: 22px
+			& .select__text
+				white-space: nowrap
+				overflow: hidden
+				text-overflow: ellipsis
+				padding-right: 25px
 
 	&__diff-type
 		font-size: 14px
@@ -185,7 +191,7 @@
 		&:hover
 			text-decoration: underline
 
-	@media screen and ( max-width: 600px )
+	@media screen and ( max-width: 900px )
 		&__count-section-body
 			flex-wrap: wrap
 			justify-content: flex-start
