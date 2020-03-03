@@ -374,7 +374,7 @@ let w = 800,
 	coef1 = 0, 
 	coef2 = 0,
 	count = 0,
-	type = 0;
+	type = [0,0,0];
 
 
 let topLine = document.body.querySelector('.calculate__top-line');
@@ -386,7 +386,7 @@ let cost = document.body.querySelector('.calculate__t-cost');
 let avarCost = document.body.querySelector('.calculate__a-cost');
 
 function calc() {
-	let a = arr[count][type];
+	let a = arr[count][type[count]];
 	
 	let keysW =  Object.keys(a);
 	w = Math.max(w, keysW[0]);
@@ -407,15 +407,15 @@ calc();
 
 // === size ===
 width.oninput = function() {
-	if (arr[count][type][this.value]) {
+	if (arr[count][type[count]][this.value]) {
 		w = this.value;
 		calc();
 	}
 }
 
 width.onblur = function() {
-	let keysW = Object.keys(arr[count][type]);
-	if (!arr[count][type][this.value]) {
+	let keysW = Object.keys(arr[count][type[count]]);
+	if (!arr[count][type[count]][this.value]) {
 		for (let i = 0; i < keysW.length; i++) {
 			if (+this.value < keysW[i]) {
 				w = this.value = keysW[i];
@@ -427,15 +427,15 @@ width.onblur = function() {
 }
 
 height.oninput = function() {
-	if (arr[count][type][w][this.value]) {
+	if (arr[count][type[count]][w][this.value]) {
 		h = this.value;
 		calc();
 	}
 }
 
 height.onblur = function() {
-	let keysH = Object.keys(arr[count][type][w]);
-	if (!arr[count][type][w][this.value]) {
+	let keysH = Object.keys(arr[count][type[count]][w]);
+	if (!arr[count][type[count]][w][this.value]) {
 		for (let i = 0; i < keysH.length; i++) {
 			if (+this.value < keysH[i]) {
 				h = this.value = keysH[i];
@@ -485,24 +485,82 @@ selectListRadio.forEach((item, i) => {
 
 // === count ===
 
-let countSections = document.body.querySelectorAll('.calculate__count-section .calculate__c-radio');
-countSections.forEach((item, i) => {
-	item.addEventListener('change', function() {
-		count = i;
-		let a = arr[count][type];
-		let keysW = Object.keys(a);
-		let keysH = Object.keys(a[keysW[0]]);
+let countSection = document.body.querySelector('.calculate__count-section'),
+	countSectionItems = countSection.querySelectorAll('.calculate__c-item'),
+	arrImg = ['img__blind', 'img__turn', 'img__turn-folding'];
 
-		width.setAttribute('min', keysW[0]);
-		width.setAttribute('max', keysW[keysW.length - 1]);
-		height.setAttribute('min', keysH[0]);
-		height.setAttribute('max', keysH[keysH.length - 1]);
+countSectionItems.forEach((item, i) => {
+	let sel1 = sel2 = 0;
+
+	let countSectionItemRadio = item.querySelector('.calculate__c-radio');
+	countSectionItemRadio.addEventListener('change', function() {
+		count = i;
 
 		calc();
 	})
+	
+	let countSectionSelectLists = item.querySelectorAll('.select__list'),
+		countSectionWrapImgs = item.querySelectorAll('.calculate__wrap-c-img');
+
+	countSectionSelectLists.forEach((select, s) => {
+		let selectRadios = select.querySelectorAll('.select__radio');
+
+		selectRadios.forEach((radio, r) => {
+			radio.addEventListener('click', function() {
+				countSectionWrapImgs[s].className = 'calculate__wrap-c-img img__blind';
+				countSectionWrapImgs[s].classList.add(arrImg[r]);
+
+				if (i === 0)
+					type[0] = r;
+				else if (i === 1) {
+					if (s === 0) {
+						let secondSelect = countSectionSelectLists[1].querySelectorAll('.select__radio');
+						sel2 = r;
+						if (r === 0) {
+							secondSelect[0].disabled = false;
+							secondSelect[1].disabled = false;
+							secondSelect[2].disabled = true;
+						} else if (r === 1) {
+							secondSelect[0].disabled = false;
+							secondSelect[1].disabled = true;
+							secondSelect[2].disabled = false;
+						} else {
+							secondSelect[0].disabled = true;
+							secondSelect[1].disabled = false;
+							secondSelect[2].disabled = true;
+						}
+					} else if (i === 1 && s === 1) {
+						let firstSelect = countSectionSelectLists[0].querySelectorAll('.select__radio');
+						sel1 = r;
+						if (r === 0) {
+							firstSelect[0].disabled = false;
+							firstSelect[1].disabled = false;
+							firstSelect[2].disabled = true;
+						} else if (r === 1) {
+							firstSelect[0].disabled = false;
+							firstSelect[1].disabled = true;
+							firstSelect[2].disabled = false;
+						} else {
+							firstSelect[0].disabled = true;
+							firstSelect[1].disabled = false;
+							firstSelect[2].disabled = true;
+						}
+					}
+					type[1] = sel1 + sel2;
+					if (type[1] > 2)
+						type[1] = 2;
+				}
+
+				calc();
+			})
+		})
+	})
+
 })
 
-// === end count ===
+
+// === end selects ===
+
 
 // function addItem(selectUL, text) {
 // 	let li = document.createElement('li');

@@ -1022,17 +1022,30 @@ figure, ul {
 }
 
 .calculate__c-item:not(:last-child) {
-  margin-right: 35px;
+  margin-right: 25px;
 }
 
 .calculate__c-icon {
+  display: -webkit-box;
+  display: flex;
   padding: 7px;
   border: 1px solid #c8c8c8;
   border-radius: 1px;
 }
 
+.calculate__wrap-c-img {
+  position: relative;
+}
+
+.calculate__wrap-c-img:not(:last-child) {
+  margin-right: 7px;
+}
+
 .calculate__c-img {
+  display: block;
   width: 100%;
+  max-width: 140px;
+  height: auto;
 }
 
 .calculate__c-radio {
@@ -1073,9 +1086,7 @@ figure, ul {
 }
 
 .calculate__c-select .select__current-val .select__text {
-  white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis;
   padding-right: 25px;
 }
 
@@ -1173,6 +1184,36 @@ figure, ul {
     font-size: 16px;
     padding: 15px 20px;
   }
+}
+
+.img__blind::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("../img/w-1.png") no-repeat 0 0/cover;
+}
+
+.img__turn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("../img/w-2.png") no-repeat 0 0/cover;
+}
+
+.img__turn-folding::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("../img/w-3.png") no-repeat 0 0/cover;
 }
 
 .discount {
@@ -1617,6 +1658,12 @@ figure, ul {
 .select__radio:checked + .select__text {
   background-color: #00bd6f;
   color: #fff;
+}
+
+.select__radio:disabled + .select__text {
+  color: #bababa;
+  background: none !important;
+  cursor: unset;
 }
 
 .select__text {
