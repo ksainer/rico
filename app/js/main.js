@@ -1,3 +1,5 @@
+// === custom select ===
+
 let selectAll = document.body.querySelectorAll('.select');
 
 selectAll.forEach(item => {
@@ -71,6 +73,8 @@ selectAll.forEach(item => {
 		}
 	});
 })
+
+// === end custom select ===
 
 let arr = [
 	// one section
@@ -377,13 +381,13 @@ let w = 800,
 	type = [0,0,0];
 
 
-let topLine = document.body.querySelector('.calculate__top-line');
-let width = topLine.querySelector('.calculate__size .calculate__width');
-let height = topLine.querySelector('.calculate__size .calculate__height');
-let selectListText = topLine.querySelectorAll('.select__list .select__text');
-let selectListRadio = topLine.querySelectorAll('.select__list .select__radio');
-let cost = document.body.querySelector('.calculate__t-cost');
-let avarCost = document.body.querySelector('.calculate__a-cost');
+let topLine = document.body.querySelector('.calculate__top-line'),
+	width = topLine.querySelector('.calculate__size .calculate__width'),
+	height = topLine.querySelector('.calculate__size .calculate__height'),
+	selectListText = topLine.querySelectorAll('.select__list .select__text'),
+	selectListRadio = topLine.querySelectorAll('.select__list .select__radio'),
+	cost = document.body.querySelector('.calculate__t-cost'),
+	avarCost = document.body.querySelector('.calculate__a-cost');
 
 function calc() {
 	let a = arr[count][type[count]];
@@ -405,7 +409,7 @@ function calc() {
 }
 calc();
 
-// === size ===
+// === calc size (width + height) ===
 width.oninput = function() {
 	if (arr[count][type[count]][this.value]) {
 		w = this.value;
@@ -447,7 +451,7 @@ height.onblur = function() {
 }
 // === end size ===
 
-// === prods ===
+// === products ===
 
 let prods = topLine.querySelectorAll('input[name="prod"]');
 
@@ -495,6 +499,15 @@ countSectionItems.forEach((item, i) => {
 	let countSectionItemRadio = item.querySelector('.calculate__c-radio');
 	countSectionItemRadio.addEventListener('change', function() {
 		count = i;
+
+		let a = arr[count][type[count]];
+		let keysW = Object.keys(a);
+		let keysH = Object.keys(a[keysW[0]]);
+
+		width.setAttribute('min', keysW[0]);
+		width.setAttribute('max', keysW[keysW.length - 1]);
+		height.setAttribute('min', keysH[0]);
+		height.setAttribute('max', keysH[keysH.length - 1]);
 
 		calc();
 	})
@@ -555,21 +568,6 @@ countSectionItems.forEach((item, i) => {
 			})
 		})
 	})
-
 })
 
-
 // === end selects ===
-
-
-// function addItem(selectUL, text) {
-// 	let li = document.createElement('li');
-
-// 	li.className = 'select__item';
-// 	li.innerHTML = '<label class="select__label"><input type="radio" class="select__radio" name="select"><p class="select__text">' + text + '</p></label>'
-// 	selectUL.append(li);
-// }
-
-// function removeItem(selectUL) {
-// 	selectUL.children[selectUL.children.length - 1].remove();
-// }

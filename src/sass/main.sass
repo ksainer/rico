@@ -38,6 +38,11 @@ figure, ul
 	cursor: pointer
 	outline: none
 	white-space: nowrap
+	transition: filter .1s linear, transform 30ms linear
+	&:hover, &:focus
+		filter: drop-shadow(0 0 5px $orange) saturate(120%)
+	&:active
+		transform: translateY(2px)
 .title
 	font-size: 44px
 	color: $blue

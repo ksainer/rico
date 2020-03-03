@@ -99,6 +99,20 @@ figure, ul {
   cursor: pointer;
   outline: none;
   white-space: nowrap;
+  -webkit-transition: -webkit-filter .1s linear, -webkit-transform 30ms linear;
+  transition: -webkit-filter .1s linear, -webkit-transform 30ms linear;
+  transition: filter .1s linear, transform 30ms linear;
+  transition: filter .1s linear, transform 30ms linear, -webkit-filter .1s linear, -webkit-transform 30ms linear;
+}
+
+.button:hover, .button:focus {
+  -webkit-filter: drop-shadow(0 0 5px #fd7538) saturate(120%);
+  filter: drop-shadow(0 0 5px #fd7538) saturate(120%);
+}
+
+.button:active {
+  -webkit-transform: translateY(2px);
+  transform: translateY(2px);
 }
 
 .title {
@@ -174,8 +188,8 @@ figure, ul {
   border-radius: 5px;
   background: transparent;
   font-size: 16px;
-  -webkit-transition: border .1s;
-  transition: border .1s;
+  -webkit-transition: border .05s;
+  transition: border .05s;
   outline: none;
   white-space: nowrap;
 }
@@ -938,7 +952,8 @@ figure, ul {
 }
 
 .calculate__radio {
-  display: none;
+  position: absolute;
+  opacity: 0;
 }
 
 .calculate__radio:checked ~ .calculate__icon {
@@ -946,6 +961,7 @@ figure, ul {
 }
 
 .calculate__label {
+  position: relative;
   cursor: pointer;
 }
 
@@ -973,7 +989,7 @@ figure, ul {
   line-height: 40px;
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1100px) {
   .calculate__top-line {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -1008,6 +1024,7 @@ figure, ul {
 }
 
 .calculate__c-label {
+  position: relative;
   cursor: pointer;
 }
 
@@ -1049,7 +1066,10 @@ figure, ul {
 }
 
 .calculate__c-radio {
-  display: none;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .calculate__c-radio:checked ~ .calculate__c-icon {
@@ -1623,6 +1643,7 @@ figure, ul {
 .select__current-val .select__text {
   width: 100%;
   padding-right: 40px;
+  overflow: hidden;
 }
 
 .select__check {
