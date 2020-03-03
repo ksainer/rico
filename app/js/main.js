@@ -60,12 +60,7 @@ selectAll.forEach(item => {
 		}
 
 		item.onkeydown = function(e) {
-			if (e.keyCode === 13) {
-				currentText.textContent = this.parentElement.querySelector('.select__text').textContent;
-				curRadio = i;
-				hideList();
-			}
-			if (e.keyCode === 27)
+			if (e.keyCode === 13 || e.keyCode === 27 || e.keyCode === 9) // enter esc tab
 				hideList();
 		}
 	})
@@ -75,7 +70,6 @@ selectAll.forEach(item => {
 			hideList();
 		}
 	});
-
 })
 
 let arr = [
@@ -457,8 +451,6 @@ height.onblur = function() {
 
 let prods = topLine.querySelectorAll('input[name="prod"]');
 
-// selectListRadio[1].click();
-
 prods.forEach((item, i)=> {
 
 	item.onchange = function() {
@@ -470,7 +462,7 @@ prods.forEach((item, i)=> {
 			text.textContent = types[i][j];
 		})
 
-		selectListRadio[0].click();		
+		selectListRadio[0].click();
 	}
 })
 
@@ -512,8 +504,14 @@ countSections.forEach((item, i) => {
 
 // === end count ===
 
+// function addItem(selectUL, text) {
+// 	let li = document.createElement('li');
 
+// 	li.className = 'select__item';
+// 	li.innerHTML = '<label class="select__label"><input type="radio" class="select__radio" name="select"><p class="select__text">' + text + '</p></label>'
+// 	selectUL.append(li);
+// }
 
-
-
-
+// function removeItem(selectUL) {
+// 	selectUL.children[selectUL.children.length - 1].remove();
+// }
