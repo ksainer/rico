@@ -23,8 +23,8 @@ gulp.task('scripts', () => {
 		.pipe(babel({
 			presets: ['@babel/env', 'minify'],
 			presets: ['@babel/env'],
-			plugins: [ ["transform-remove-console", { "exclude": [ "error", "warn"] }] ],
-			comments: false
+			// plugins: [ ["transform-remove-console", { "exclude": [ "error", "warn"] }] ],
+			// comments: false
 	  	}))
 		.pipe(gulp.dest('app/js'))
 		.pipe(browserSync.stream())

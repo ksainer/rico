@@ -1,4 +1,3 @@
-// === custom select ===
 class Select {
 	constructor(select, list, callback) {
 		if (!(select instanceof HTMLDivElement)) return console.error(select + 'is not an dom-element.');
@@ -32,10 +31,10 @@ class Select {
 		this.currentText.textContent = this.list[0];
 		this.currentText.onselectstart = () => false;
 		this.checkbox.onkeydown = (e) => {
-			if (e.keyCode === 13) {
+			if (e.code === "Enter") {
 				this.checkbox.click();
 			}
-			if (e.keyCode === 40) {
+			if (e.code === "ArrowDown") {
 				e.preventDefault();
 				if (this.ul.children[this.currentRadioIndex + 1]) {
 					this.currentRadioIndex++;
@@ -44,7 +43,7 @@ class Select {
 				}
 				this.radios[this.currentRadioIndex].click();
 			}
-			if (e.keyCode === 38) {
+			if (e.code === "ArrowUp") {
 				e.preventDefault();
 				if (this.ul.children[this.currentRadioIndex - 1]) {
 					this.currentRadioIndex--;
@@ -472,7 +471,7 @@ let types = [
 		'MONTBLANK Engine',
 		'MONTBLANK Expert'
 	]
-]
+];
 
 let arrCoef = [1, 1.4, 1.5];
 let arrCoef2 = [[1,1.4],[1,1.5],[1,1.4]];
