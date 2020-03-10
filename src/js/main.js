@@ -14,7 +14,6 @@ class Select {
 		this.select = select;
 		this.list = list;
 		this.currentRadioIndex = 0;
-		this.countItem = 0;
 		this.radios = [];
 	};
 
@@ -48,7 +47,7 @@ class Select {
 				if (this.ul.children[this.currentRadioIndex - 1]) {
 					this.currentRadioIndex--;
 				} else {
-					this.currentRadioIndex = this.countItem - 1;
+					this.currentRadioIndex = this.ul.children.length - 1;
 				}
 				this.radios[this.currentRadioIndex].click();
 			}
@@ -81,7 +80,7 @@ class Select {
 	}
 
 	addItem(text) {
-		let i = this.countItem;
+		let index = this.ul.children.length;
 
 		const item = document.createElement('li');
 		item.className = 'select__item';
@@ -105,13 +104,13 @@ class Select {
 
 		radio.onclick = (e) => {
 			this.currentText.textContent = p.textContent;
-			this.currentRadioIndex = i;
+			this.currentRadioIndex = index;
 
 			if (e.clientX && radio.checked) {
 				this.checkbox.click();
 			}
 			if (this.callback) {
-				this.callback(i);
+				this.callback(index);
 			}
 		}
 
@@ -120,7 +119,6 @@ class Select {
 				this.checkbox.click();
 		}
 
-		this.countItem++;
 		this.radios.push(radio);
 	};
 
@@ -129,12 +127,11 @@ class Select {
 			return console.error(count, 'is not a Nubmer.');
 		};
 
-		count = Math.min(count, this.countItem - 1)
+		count = Math.min(count, this.ul.children.length - 1);
 
 		for (let i = 0; i < count; i++) {
-			this.ul.children[this.countItem - 1].remove();
+			this.ul.lastElementChild.remove();
 			this.radios.pop();
-			this.countItem--;
 		}
 	};
 
@@ -157,13 +154,13 @@ class Select {
 	change(newValsArray) {
 		if (!Array.isArray(newValsArray)) return console.error(newValsArray, 'is not an Array.');
 
-		if (this.countItem > newValsArray.length) {
-			this.removeItem(this.countItem - newValsArray.length);
-			this.radios.forEach((radio,i) => {
+		if (this.ul.children.length > newValsArray.length) {
+			this.removeItem(this.ul.children.length - newValsArray.length);
+			this.radios.forEach((radio, i) => {
 				radio.parentElement.lastElementChild.textContent = newValsArray[i];
 			});
 		} else {
-			newValsArray.forEach((text,i) => {
+			newValsArray.forEach((text, i) => {
 				if (this.radios[i]) {
 					this.radios[i].parentElement.lastElementChild.textContent = text;
 				} else {
@@ -176,8 +173,6 @@ class Select {
 };
 
 document.addEventListener('DOMContentLoaded', () => {
-
-// === end custom select ===
 
 let arr = [
 	// one section
@@ -513,7 +508,7 @@ function calc() {
 
 	cost.textContent = Math.round(a[w][h] * arrCoef[coef1] * arrCoef2[coef1][coef2]);
 	avarCost.textContent = Math.round(a[w][h] * arrCoef[coef1] * arrCoef2[coef1][coef2] * 1.2);
-}
+};
 calc();
 
 // === calc size (width + height) ===
