@@ -2,10 +2,11 @@ $blue: #093b5f
 $green: #00bd6f
 $orange: #fd7538
 $border: #c8c8c8
+$fontBlack: 'DINPro-Black', serif
 
 %blue-text
 	text-transform: uppercase
-	font-family: 'DINPro-Black', serif
+	font-family: $fontBlack
 	color: $blue
 *
 	// outline: 1px dashed orange
@@ -34,7 +35,7 @@ figure, ul
 	color: #fff
 	text-transform: uppercase
 	font-size: 20px
-	font-family: 'DINPro-Black', serif
+	font-family: $fontBlack
 	cursor: pointer
 	outline: none
 	white-space: nowrap
@@ -47,7 +48,7 @@ figure, ul
 	font-size: 44px
 	color: $blue
 	text-align: center
-	font-family: 'DINPro-Black', serif
+	font-family: $fontBlack
 	@media screen and ( max-width: 736px )
 		font-size: 38px
 	@media screen and ( max-width: 568px )

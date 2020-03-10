@@ -1,78 +1,182 @@
 // === custom select ===
+class Select {
+	constructor(select, list, callback) {
+		if (!(select instanceof HTMLDivElement)) return console.error(select + 'is not an dom-element.');
+		if (!Array.isArray(list)) return console.error(list, 'is not an array.');
 
-let selectAll = document.body.querySelectorAll('.select');
-
-selectAll.forEach(item => {
-	let currentText = item.querySelector('.select__current-val .select__text');
-	let radio = item.querySelectorAll('.select__radio');
-	let curRadio = 0;
-
-	let checkbox = item.querySelector('.select__check');
-	let list = item.querySelector('.select__list');
-
-	function showList() {
-		checkbox.checked = true;
-		list.hidden = false;
-		radio[curRadio].checked = true;
-		radio[curRadio].focus();
-	}
-
-	function hideList() {
-		checkbox.checked = false;
-		list.hidden = true;
-		checkbox.focus();
-	}
-	
-	checkbox.onkeydown = function(e) {
-		if (e.keyCode === 13) {
-			showList()
-		}
-		if (e.keyCode === 40 ) {
-			e.preventDefault()
-			if (radio[curRadio + 1]) {
-				curRadio++;
-				radio[curRadio].click()
-			}
-		}
-		if (e.keyCode === 38 ) {
-			e.preventDefault()
-			if (radio[curRadio - 1]) {
-				curRadio--;
-				radio[curRadio].click();
-			}
-		}
-	}
-	checkbox.onchange = function() {
-		if (this.checked)
-			showList()
-		else
-			hideList()
-	}
-
-	radio.forEach((item, i) => {
-		item.onchange = function() {
-			currentText.textContent = this.parentElement.querySelector('.select__text').textContent;
-		}
-		item.onclick = function(e) {
-			currentText.textContent = this.parentElement.querySelector('.select__text').textContent;
-			curRadio = i;
-			if (e.clientX && this.checked) {
-				hideList();
+		if (callback) {
+			if (typeof callback === 'function') {
+				this.callback = callback;
+			} else {
+				console.warn('callback is not a function.');
 			}
 		}
 
-		item.onkeydown = function(e) {
-			if (e.keyCode === 13 || e.keyCode === 27 || e.keyCode === 9) // enter esc tab
-				hideList();
+		this.select = select;
+		this.list = list;
+		this.currentRadioIndex = 0;
+		this.countItem = 0;
+		this.radios = [];
+	};
+
+	render() {
+		const labelCurrentVal = document.createElement('label');
+		labelCurrentVal.className = 'select__current-val';
+
+		this.checkbox = document.createElement('input');
+		this.checkbox.setAttribute('type', 'checkbox');
+		this.checkbox.className = 'select__check';
+
+		this.currentText = document.createElement('p');
+		this.currentText.className = 'select__text';
+		this.currentText.textContent = this.list[0];
+		this.currentText.onselectstart = () => false;
+		this.checkbox.onkeydown = (e) => {
+			if (e.keyCode === 13) {
+				this.checkbox.click();
+			}
+			if (e.keyCode === 40) {
+				e.preventDefault();
+				if (this.ul.children[this.currentRadioIndex + 1]) {
+					this.currentRadioIndex++;
+				} else {
+					this.currentRadioIndex = 0;
+				}
+				this.radios[this.currentRadioIndex].click();
+			}
+			if (e.keyCode === 38) {
+				e.preventDefault();
+				if (this.ul.children[this.currentRadioIndex - 1]) {
+					this.currentRadioIndex--;
+				} else {
+					this.currentRadioIndex = this.countItem - 1;
+				}
+				this.radios[this.currentRadioIndex].click();
+			}
+		};
+		this.checkbox.onchange = () => {
+			if (this.checkbox.checked) {
+				this.ul.hidden = false;
+				this.radios[this.currentRadioIndex].checked = true;
+				this.radios[this.currentRadioIndex].focus();
+			} else {
+				this.ul.hidden = true;
+				this.checkbox.focus();
+			}
+		};
+
+		this.ul = document.createElement('ul');
+		this.ul.className = 'select__list';
+		this.ul.hidden = true;
+
+		this.list.forEach(item => this.addItem(item));
+
+		labelCurrentVal.append(this.checkbox, this.currentText);
+		this.select.append(labelCurrentVal, this.ul);
+
+		document.addEventListener('click', e => {
+			if (!this.select.contains(e.target) && this.checkbox.checked) {
+				this.checkbox.click();
+			};
+		});
+	}
+
+	addItem(text) {
+		let i = this.countItem;
+
+		const item = document.createElement('li');
+		item.className = 'select__item';
+
+		const label = document.createElement('label');
+		label.className = 'select__label';
+
+		const radio = document.createElement('input');
+		radio.className = 'select__radio';
+		radio.setAttribute('type', 'radio');
+		radio.setAttribute('name', 'radio');
+
+		const p = document.createElement('p');
+		p.className = 'select__text';
+		p.textContent = text;
+		p.onselectstart = () => false;
+
+		label.append(radio, p);
+		item.append(label);
+		this.ul.append(item);
+
+		radio.onclick = (e) => {
+			this.currentText.textContent = p.textContent;
+			this.currentRadioIndex = i;
+
+			if (e.clientX && radio.checked) {
+				this.checkbox.click();
+			}
+			if (this.callback) {
+				this.callback(i);
+			}
 		}
-	})
-	
-	document.addEventListener('click', function(e) {
-		if (!item.contains(e.target) && !list.hidden) {
-			hideList();
+
+		radio.onkeydown = (e) => {
+			if (e.keyCode === 13 || e.keyCode === 27 || e.keyCode === 9)
+				this.checkbox.click();
 		}
-	});
-})
+
+		this.countItem++;
+		this.radios.push(radio);
+	};
+
+	removeItem(count = 1) {
+		if (!Number.isInteger(count)) {
+			return console.error(count, 'is not a Nubmer.');
+		};
+
+		count = Math.min(count, this.countItem - 1)
+
+		for (let i = 0; i < count; i++) {
+			this.ul.children[this.countItem - 1].remove();
+			this.radios.pop();
+			this.countItem--;
+		}
+	};
+
+	disabledItem(indexArray) {
+		if (!Number.isInteger(indexArray) && !Array.isArray(indexArray)) return console.error(indexArray, 'is not an Array or Nubmer.');
+
+		if (Number.isInteger(indexArray)) {
+			indexArray = [indexArray];
+		};
+
+		this.radios.forEach((radio, i) => {
+			if (indexArray.includes(i)) {
+				radio.disabled = true;
+			} else if (radio.disabled) {
+				radio.disabled = false;
+			}
+		});
+	};
+
+	change(newValsArray) {
+		if (!Array.isArray(newValsArray)) return console.error(newValsArray, 'is not an Array.');
+
+		if (this.countItem > newValsArray.length) {
+			this.removeItem(this.countItem - newValsArray.length);
+			this.radios.forEach((radio,i) => {
+				radio.parentElement.lastElementChild.textContent = newValsArray[i];
+			});
+		} else {
+			newValsArray.forEach((text,i) => {
+				if (this.radios[i]) {
+					this.radios[i].parentElement.lastElementChild.textContent = text;
+				} else {
+					this.addItem(text);
+				};
+			});
+		}
+		this.radios[0].click();
+	};
+};
+
+document.addEventListener('DOMContentLoaded', () => {
 
 // === end custom select ===
 
@@ -381,13 +485,17 @@ let w = 800,
 	type = [0,0,0];
 
 
-let topLine = document.body.querySelector('.calculate__top-line'),
+const topLine = document.body.querySelector('.calculate__top-line'),
 	width = topLine.querySelector('.calculate__size .calculate__width'),
 	height = topLine.querySelector('.calculate__size .calculate__height'),
-	selectListText = topLine.querySelectorAll('.select__list .select__text'),
-	selectListRadio = topLine.querySelectorAll('.select__list .select__radio'),
 	cost = document.body.querySelector('.calculate__t-cost'),
 	avarCost = document.body.querySelector('.calculate__a-cost');
+
+const typeSelect = new Select(topLine.querySelector('.select'), types[0], (i) => {
+	coef2 = i;
+	calc();
+});
+typeSelect.render();
 
 function calc() {
 	let a = arr[count][type[count]];
@@ -462,43 +570,23 @@ prods.forEach((item, i)=> {
 		coef2 = 0;
 		calc();
 
-		selectListText.forEach((text,j) => {
-			text.textContent = types[i][j];
-		})
-
-		selectListRadio[0].click();
+		typeSelect.change(types[i]);
 	}
 })
 
 // === end prods ===
 
-// === coef2 ===
-
-selectListRadio.forEach((item, i) => {
-	item.addEventListener('change', () => {
-		coef2 = i;
-		calc();
-	})
-	item.addEventListener('click', () => {
-		coef2 = i;
-		calc();
-	})
-})
-
-// === end coef2 ===
-
 // === count ===
 
-let countSection = document.body.querySelector('.calculate__count-section'),
+const countSection = document.body.querySelector('.calculate__count-section'),
 	countSectionItems = countSection.querySelectorAll('.calculate__c-item'),
 	arrImg = ['img__blind', 'img__turn', 'img__turn-folding'];
 
-countSectionItems.forEach((item, i) => {
-	let sel1 = sel2 = 0;
+countSectionItems.forEach((item, countSection) => {
 
 	let countSectionItemRadio = item.querySelector('.calculate__c-radio');
 	countSectionItemRadio.addEventListener('change', function() {
-		count = i;
+		count = countSection;
 
 		let a = arr[count][type[count]];
 		let keysW = Object.keys(a);
@@ -510,64 +598,53 @@ countSectionItems.forEach((item, i) => {
 		height.setAttribute('max', keysH[keysH.length - 1]);
 
 		calc();
-	})
-	
-	let countSectionSelectLists = item.querySelectorAll('.select__list'),
-		countSectionWrapImgs = item.querySelectorAll('.calculate__wrap-c-img');
+	});
 
-	countSectionSelectLists.forEach((select, s) => {
-		let selectRadios = select.querySelectorAll('.select__radio');
+	const wrapImgs = item.querySelectorAll('.calculate__wrap-c-img');
 
-		selectRadios.forEach((radio, r) => {
-			radio.addEventListener('click', function() {
-				countSectionWrapImgs[s].className = 'calculate__wrap-c-img img__blind';
-				countSectionWrapImgs[s].classList.add(arrImg[r]);
-
-				if (i === 0)
-					type[0] = r;
-				else if (i === 1) {
-					if (s === 0) {
-						let secondSelect = countSectionSelectLists[1].querySelectorAll('.select__radio');
-						sel2 = r;
-						if (r === 0) {
-							secondSelect[0].disabled = false;
-							secondSelect[1].disabled = false;
-							secondSelect[2].disabled = true;
-						} else if (r === 1) {
-							secondSelect[0].disabled = false;
-							secondSelect[1].disabled = true;
-							secondSelect[2].disabled = false;
-						} else {
-							secondSelect[0].disabled = true;
-							secondSelect[1].disabled = false;
-							secondSelect[2].disabled = true;
-						}
-					} else if (i === 1 && s === 1) {
-						let firstSelect = countSectionSelectLists[0].querySelectorAll('.select__radio');
-						sel1 = r;
-						if (r === 0) {
-							firstSelect[0].disabled = false;
-							firstSelect[1].disabled = false;
-							firstSelect[2].disabled = true;
-						} else if (r === 1) {
-							firstSelect[0].disabled = false;
-							firstSelect[1].disabled = true;
-							firstSelect[2].disabled = false;
-						} else {
-							firstSelect[0].disabled = true;
-							firstSelect[1].disabled = false;
-							firstSelect[2].disabled = true;
-						}
-					}
-					type[1] = sel1 + sel2;
-					if (type[1] > 2)
-						type[1] = 2;
-				}
-
+	if (countSection === 0) {
+		const select = new Select(
+			item.querySelector('.select'), 
+			['Глухая', 'Поворотная'], 
+			i => {
+				wrapImgs[0].className = 'calculate__wrap-c-img img__blind';
+				wrapImgs[0].classList.add(arrImg[i]);
+				type[0] = i;
 				calc();
-			})
-		})
-	})
+			}
+		);
+		select.render();
+	} else if (countSection === 1) {		
+		const selects = [];
+
+		item.querySelectorAll('.select').forEach((item, index) => {
+			selects[index] = new Select(
+				item, 
+				['Глухая', 'Поворотная', 'Поворотно-откидная'], 
+				i => {
+					wrapImgs[index].className = 'calculate__wrap-c-img img__blind';
+					wrapImgs[index].classList.add(arrImg[i]);
+
+					type[1] = selects[index].currentRadioIndex + selects[+!index].currentRadioIndex;
+					if (type[1] > 2) { type[1] = 2; }
+
+					if (i === 0) {
+						selects[+!index].disabledItem(2);
+					} else if (i === 1) {
+						selects[+!index].disabledItem(1);
+					} else if (i === 2) {
+						selects[+!index].disabledItem([0,2]);
+					}
+					
+					calc();
+				}
+			);
+			selects[index].render();
+			selects[index].disabledItem(2);
+			
+		});
+	}
 })
 
 // === end selects ===
+})

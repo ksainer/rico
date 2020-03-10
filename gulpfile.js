@@ -3,8 +3,8 @@ const gulp = require('gulp'),
 	autoprefixer = require('gulp-autoprefixer'),
 	cleanCSS = require('gulp-clean-css'),
 	concat = require('gulp-concat'),
-	minify = require('gulp-minify'),
-	browserSync = require('browser-sync').create();
+	browserSync = require('browser-sync').create(),
+	babel = require('gulp-babel');
 	
 
 gulp.task('styles', () => {
@@ -19,8 +19,13 @@ gulp.task('styles', () => {
 
 gulp.task('scripts', () => {
 	return gulp.src('src/js/main.js')
-		.pipe(concat('main.js'))
-		.pipe(minify({compress: true}))
+		.pipe(concat('all.min.js'))
+		.pipe(babel({
+			presets: ['@babel/env', 'minify'],
+			presets: ['@babel/env'],
+			plugins: [ ["transform-remove-console", { "exclude": [ "error", "warn"] }] ],
+			comments: false
+	  	}))
 		.pipe(gulp.dest('app/js'))
 		.pipe(browserSync.stream())
 });
